@@ -3,3 +3,4 @@
 **/.ipynb_checkpoints
 **/*.h5
 **/training/**
+**/datasets/**
