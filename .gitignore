@@ -4,3 +4,5 @@
 **/*.h5
 **/training/**
 **/datasets/**
+**/model*
+methods/.DS_Store
