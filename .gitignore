@@ -6,3 +6,5 @@
 **/datasets/**
 **/model*
 methods/.DS_Store
+**/train/**
+**/validation/**
