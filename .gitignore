@@ -7,3 +7,5 @@
 **/train/**
 **/validation/**
 .vscode/
+test/
+train/
