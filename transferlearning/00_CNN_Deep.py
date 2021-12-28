@@ -17,6 +17,7 @@ seed = 0
 numpy.random.seed(seed)
 tf.random.set_seed(3)
 
+IMAGE_SIZE = 150
 # 데이터 불러오기
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 train_datagen = ImageDataGenerator(rescale=1./255,
@@ -25,12 +26,11 @@ train_datagen = ImageDataGenerator(rescale=1./255,
                                   height_shift_range=0.5,
                                   vertical_flip=True,
                                   zoom_range=20,
-                                  rotation_range=40,
-                                  fill_mode='nearest')
+                                  rotation_range=40,)
 
 train_generator = train_datagen.flow_from_directory(
        './datas/fromdownloads/train',
-       target_size=(50, 50),
+       target_size=(IMAGE_SIZE, IMAGE_SIZE),
        batch_size=5,
        class_mode='categorical'
        )
@@ -39,14 +39,14 @@ test_datagen = ImageDataGenerator(rescale=1./255)
 
 test_generator = test_datagen.flow_from_directory(
        './datas/fromdownloads/test',
-       target_size=(50, 50),
+       target_size=(IMAGE_SIZE, IMAGE_SIZE),
        batch_size=5,
        class_mode='categorical'
        )
 
 # 컨볼루션 신경망의 설정
 model = Sequential()
-model.add(Conv2D(32, kernel_size=(3, 3), input_shape=(50, 50, 3), activation='relu'))
+model.add(Conv2D(32, kernel_size=(3, 3), input_shape=(IMAGE_SIZE, IMAGE_SIZE, 3), activation='relu'))
 model.add(Conv2D(64, (3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=2))
 model.add(Dropout(0.25))
@@ -79,7 +79,7 @@ tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=LOGS_DIR, histogra
 history = model.fit(
        train_generator,
        steps_per_epoch=3,
-       epochs=50,   # epochs=20,
+       epochs=30,   # epochs=20,
        validation_data=test_generator,
        validation_steps=4,
        callbacks=[tensorboard_callback,],)

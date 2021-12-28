@@ -6,10 +6,9 @@ new_model = tf.keras.models.load_model('./models/my_model.h5')
 # 모델 구조를 출력합니다
 new_model.summary()
 
-list = ['accordion', 'airplanes', 'anchor', 'ant']
 import numpy as np
-for dir in list:
-       path = './test/'+dir+'/image_0009.jpg'
+for i in range(4):
+       path = './datas/fromdownloads/predict/0'+str(i)+'.jpg'
        image = tf.keras.preprocessing.image.load_img(path, target_size=(50,50))			# with format information
        input_arr = tf.keras.preprocessing.image.img_to_array(image)	# return numpy
        x_pred = input_arr.reshape(-1, 50, 50, 3)
