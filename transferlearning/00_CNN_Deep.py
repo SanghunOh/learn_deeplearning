@@ -24,23 +24,24 @@ train_datagen = ImageDataGenerator(rescale=1./255,
                                   width_shift_range=0.5,
                                   height_shift_range=0.5,
                                   vertical_flip=True,
-                                  zoom_range=20,rotation_range=0.5,
+                                  zoom_range=20,
+                                  rotation_range=40,
                                   fill_mode='nearest')
 
 train_generator = train_datagen.flow_from_directory(
-       './train',
+       './datas/fromdownloads/train',
        target_size=(50, 50),
        batch_size=5,
-       class_mode='sparse'
+       class_mode='categorical'
        )
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
 test_generator = test_datagen.flow_from_directory(
-       './test',
+       './datas/fromdownloads/test',
        target_size=(50, 50),
        batch_size=5,
-       class_mode='sparse'
+       class_mode='categorical'
        )
 
 # 컨볼루션 신경망의 설정
@@ -54,12 +55,12 @@ model.add(Dense(128,  activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(4, activation='softmax'))
 
-model.compile(loss='sparse_categorical_crossentropy',
+model.compile(loss='categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
 
 # 모델 최적화 설정
-MODEL_DIR = './model/'
+MODEL_DIR = './models/'
 if not os.path.exists(MODEL_DIR):
     os.mkdir(MODEL_DIR)
 
@@ -77,8 +78,8 @@ tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=LOGS_DIR, histogra
 # history = model.fit(train_generator, steps_per_epoch=100, validation_data=test_generator, epochs=20, batch_size=200, callbacks=[tensorboard_callback])
 history = model.fit(
        train_generator,
-       steps_per_epoch=100,
-       epochs=20,   # epochs=20,
+       steps_per_epoch=3,
+       epochs=50,   # epochs=20,
        validation_data=test_generator,
        validation_steps=4,
        callbacks=[tensorboard_callback,],)

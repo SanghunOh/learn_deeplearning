@@ -3,9 +3,8 @@
 **/*.h5
 **/training/**
 **/datasets/**
-**/model*
+**/models*
 **/train/**
 **/validation/**
 .vscode/
-# test/
-# train/
+datas/fromdownloads/
