@@ -8,3 +8,4 @@
 **/validation/**
 .vscode/
 datas/fromdownloads/
+.ipynb_checkpoints/
