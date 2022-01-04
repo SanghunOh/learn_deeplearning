@@ -26,7 +26,7 @@ data_dir = pathlib.Path(data_dir)
 image_count = len(list(data_dir.glob('*/*.jpg')))
 print(data_dir, image_count)
 
-batch_size = 32
+batch_size = 64
 img_height = 180
 img_width = 180
 
@@ -131,11 +131,11 @@ model.compile(optimizer='adam',
 
 model.summary()
 
-epochs = 15
+epochs = 150
 history = model.fit(
   train_ds,
   validation_data=val_ds,
-  epochs=epochs
+  epochs=epochs,
 )
 
 model.save('./datas/tf_model.h5')
@@ -178,6 +178,8 @@ test_datasets_dir = "/Users/sanghunoh/Downloads/test_datasets"
 
 test_datasets_dir = pathlib.Path(test_datasets_dir)
 
+possitive = 0
+negative = 0
 for filepath in list(test_datasets_dir.glob('*.*')):
   img = keras.preprocessing.image.load_img(
       str(filepath), target_size=(img_height, img_width)
@@ -192,4 +194,12 @@ for filepath in list(test_datasets_dir.glob('*.*')):
       "belongs to {} with a {:.2f} percent confidence. - {}"
       .format(class_names[np.argmax(score)], 100 * np.max(score), filepath.stem)
   )
+  if class_names[np.argmax(score)] in filepath.stem:
+    possitive += 1
+  else :
+    negative += 1
 
+print('possitive : {}, negative : {}'.format(possitive, negative))
+# batch_size = 32, epochs = 50 --> possitive : 7, negative : 14
+# batch_size = 128, epochs = 50 --> possitive : 10, negative : 11
+# batch_size = 64, epochs = 150 --> possitive : 12, negative : 9
