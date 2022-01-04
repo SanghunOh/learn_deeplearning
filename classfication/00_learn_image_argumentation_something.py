@@ -131,7 +131,7 @@ model.compile(optimizer='adam',
 
 model.summary()
 
-epochs = 150
+epochs = 100
 history = model.fit(
   train_ds,
   validation_data=val_ds,
@@ -202,4 +202,5 @@ for filepath in list(test_datasets_dir.glob('*.*')):
 print('possitive : {}, negative : {}'.format(possitive, negative))
 # batch_size = 32, epochs = 50 --> possitive : 7, negative : 14
 # batch_size = 128, epochs = 50 --> possitive : 10, negative : 11
+# batch_size = 64, epochs = 100 --> possitive : 10, negative : 11
 # batch_size = 64, epochs = 150 --> possitive : 12, negative : 9
