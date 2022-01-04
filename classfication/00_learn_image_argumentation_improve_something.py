@@ -28,8 +28,10 @@ image_count = len(list(data_dir.glob('*/*.jpg')))
 print(data_dir, image_count)
 
 batch_size = 64
-img_height = 180
-img_width = 180
+# img_height = 180
+# img_width = 180
+img_height = 100
+img_width = 100
 
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
   data_dir,
@@ -201,7 +203,8 @@ for filepath in list(test_datasets_dir.glob('*.*')):
     negative += 1
 
 print('possitive : {}, negative : {}'.format(possitive, negative))
-# batch_size = 32, epochs = 50 --> possitive : 7, negative : 14
-# batch_size = 128, epochs = 50 --> possitive : 10, negative : 11
-# batch_size = 64, epochs = 100 --> possitive : 10, negative : 11
-# batch_size = 64, epochs = 150 --> possitive : 12, negative : 9
+# batch_size = 32, epochs = 50, image_size=180,180 --> possitive : 7, negative : 14
+# batch_size = 128, epochs = 50, image_size=180,180 --> possitive : 10, negative : 11
+# batch_size = 64, epochs = 100, image_size=180,180 --> possitive : 10, negative : 11
+# batch_size = 64, epochs = 150, image_size=180,180 --> possitive : 12, negative : 9
+# batch_size = 64, epochs = 100, image_size=100,100 --> possitive : 13, negative : 8
