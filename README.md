@@ -1,5 +1,6 @@
 ### refer 
 + [Tensorflow - coursera](https://www.coursera.org/learn/getting-started-with-tensor-flow2?sfmc_id=10559985&sfmc_key=0031U00001QQxNlQAL&utm_campaign=13938&utm_medium=email&utm_source=recommendations#instructors)
++ [Tensorflow - youtube](https://youtu.be/28QbrkRkHlo)
 + [Multilayer Perceptrons] ( https://wandb.ai/site/tutorial/multilayer-perceptrons ): 순서별 필요사항
 + GPT-3 
   + https://beta.openai.com/docs/guides/fine-tuning
