@@ -1,3 +1,8 @@
+### refer playground.tensorflow
+- [make dataset](https://scikit-learn.org/stable/modules/classes.html#samples-generator) : make_circles, make_classification
+  - https://scikit-learn.org/stable/datasets/sample_generators.html
+
+
 ### refer 
 + [Tensorflow - coursera](https://www.coursera.org/learn/getting-started-with-tensor-flow2?sfmc_id=10559985&sfmc_key=0031U00001QQxNlQAL&utm_campaign=13938&utm_medium=email&utm_source=recommendations#instructors)
 + [Tensorflow - youtube](https://youtu.be/28QbrkRkHlo)
