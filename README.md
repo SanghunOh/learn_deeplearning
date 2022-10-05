@@ -1,6 +1,5 @@
 ### refer playground.tensorflow
-- [make dataset](https://scikit-learn.org/stable/modules/classes.html#samples-generator) : make_circles, make_classification
-  - https://scikit-learn.org/stable/datasets/sample_generators.html
+- [ipynb - datasets](/codes/tf_playground/tf_playground_datasets.ipynb)
 
 ### tersorflow lean refer
 - http://introtodeeplearning.com/
